@@ -1,0 +1,16 @@
+name: Webhook Handler
+
+on:
+  workflow_dispatch:   # Allows manual triggering
+  repository_dispatch: # Triggers when the webhook is received
+    types: [custom-webhook]
+
+jobs:
+  handle-webhook:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Handle Webhook
+        run: |
